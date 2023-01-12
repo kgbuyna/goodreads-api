@@ -14,7 +14,7 @@ app.use(express.json());
 
 app.use('/api/v1/books', booksRoutes);
 app.use('/api/v1/shelves/wantToReads', wtrRoutes);
-app.use('/api/v1/', wtrRoutes);
+// app.use('/api/v1/', wtrRoutes);
 app.use(errorHandler);
 app.listen(port, () => {
   console.log(`Example app listening on port  ${port}`)
