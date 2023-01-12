@@ -3,8 +3,7 @@ const { Schema } = mongoose;
 
 const bookSchema = new Schema({
     id : {
-        type : String, 
-        // unique : true, 
+        type : String,
     }, 
     title : String,
     categories:[String],  
@@ -16,5 +15,6 @@ const bookSchema = new Schema({
     img: String,
     pages:Number, 
 });
-
-module.exports = mongoose.model('book', bookSchema);
+exports.wantToReads = mongoose.model('wantToReads', bookSchema); 
+exports.reading = mongoose.model('reading', bookSchema); 
+exports.book = mongoose.model('book', bookSchema);
