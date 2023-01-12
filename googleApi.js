@@ -17,7 +17,7 @@ exports.fetch = async(topic, page = 0)=>{
     .catch((error)=>{console.log(`Error occured  ${error}`)});
 }
 // Би async хэрэглэх газар async ашиглахгүй бол юу болдгийг нь мэдмээр байна. Яг ямар алдаа гардгийг нь мэдэхгүй болохоор шал тэнэг байна л даа. 
-function importData(resource){
+async function importData(resource){
      resource.map(async({id, volumeInfo})=>{
         await book.create([{ 
             _id: id,
@@ -32,7 +32,6 @@ function importData(resource){
     })
 }
 
-// connectDB();
 
-// connectDB(); 
+connectDB(); 
 // fetch("New York Bestseller", 6);

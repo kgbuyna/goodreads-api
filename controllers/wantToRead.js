@@ -31,7 +31,14 @@ exports.getBooks = asyncHandler( async (req, res, next)=>{
 
 
 exports.addToList = asyncHandler( async(req, res, next) =>{
-    req.body.id = req.body._id; 
+    req.body.id = req.body._id;
+    console.log(req.body);
+    
+    // console.log("Add request");
+    // console.log(req.body); 
+    // Ийшээ бол дамжуулж байгаа шдээ. Гэхдээ нөгөө хэсэг нь хаана байна вэ? req р ч гэсэн орж ирж байгаа 
+    // localhost дээр ажиллаж байна уу? шалгаад үзэх хэрэгтэй юм шиг байна. 
+
     const book = await wantToReads.create(req.body);
     console.log("");
     res.status(200).json({

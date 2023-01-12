@@ -12,7 +12,7 @@ exports.getBooks = asyncHandler(async(req, res, next)=>{
         book.deleteMany();
         fetch('New York Time Bestsellers', req.params.page);
     }
-    query = book.find();
+    query = book.find().limit(6);
     const books = await query; 
     if(books){
         res.status(200).json({
