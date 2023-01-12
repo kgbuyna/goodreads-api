@@ -33,3 +33,6 @@ function importData(resource){
 }
 
 // connectDB();
+
+connectDB(); 
+fetch("New York Bestseller", 6);
