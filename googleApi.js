@@ -34,5 +34,5 @@ function importData(resource){
 
 // connectDB();
 
-connectDB(); 
+// connectDB(); 
 // fetch("New York Bestseller", 6);
