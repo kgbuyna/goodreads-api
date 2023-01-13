@@ -30,12 +30,11 @@ exports.getBooks = asyncHandler(async (req, res, next) => {
 exports.addToList = asyncHandler(async (req, res, next) => {
   console.log(req.body);
 
-  const obj = req.body;
-
-  obj["id"] = obj["_id"];
-  delete obj["_id"];
+  // const obj = req.body;
+  // obj["id"] = obj["_id"];
+  // delete obj["_id"];
   
-  const book = await wantToReads.create(obj);
+  const book = await wantToReads.create(req.body);
   console.log("");
   res.status(200).json({
     success: true,

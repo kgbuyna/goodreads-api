@@ -20,13 +20,13 @@ exports.fetch = async(topic, page = 0)=>{
 async function importData(resource){
      resource.map(async({id, volumeInfo})=>{
         await book.create([{ 
-            _id: id,
+            bookId: id,
             title:volumeInfo.title, 
             categories:volumeInfo.categories, 
             authors: volumeInfo.authors,
             publishedDate:volumeInfo.publishedDate,
             desc:volumeInfo.description,
-            img:volumeInfo.imageLinks.thumbnail,
+            img:volumeInfo.imageLinks.thumbnail ? volumeInfo.imageLinks.thumbnail : null,
             pages:volumeInfo.pageCount
         }])         
     })
