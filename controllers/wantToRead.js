@@ -36,7 +36,7 @@ exports.addToList = asyncHandler(async (req, res, next) => {
     data: book,
   });
 });
-w
+
 exports.removeFromList = asyncHandler(async (req, res, next) => {
   const book = await wantToReads.deleteOne(req.id);
   res.status(200).json({
