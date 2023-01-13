@@ -28,20 +28,15 @@ exports.getBooks = asyncHandler(async (req, res, next) => {
 });
 
 exports.addToList = asyncHandler(async (req, res, next) => {
-  console.log(req.body);
+  console.log(req.body.props);
 
-  // const obj = req.body;
-  // obj["id"] = obj["_id"];
-  // delete obj["_id"];
-  
-  const book = await wantToReads.create(req.body);
-  console.log("");
+  const book = await wantToReads.create(req.body.props);
   res.status(200).json({
     success: true,
     data: book,
   });
 });
-
+w
 exports.removeFromList = asyncHandler(async (req, res, next) => {
   const book = await wantToReads.deleteOne(req.id);
   res.status(200).json({
