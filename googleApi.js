@@ -3,10 +3,11 @@ const connectDB = require('./config/db.js');
 const {book} = require('./Models/Book')
 
 
-exports.fetch = async(topic, page = 0)=>{
+exports.fetch = async(topic, page = 0, max)=>{
     console.log(page);
-    // https://developers.google.com/books/docs/v1/using#query-params
-    const v = "https://www.googleapis.com/books/v1/volumes?q="+topic+"&maxResults="+ 10;
+    const startIndex = page * 6;  
+    const maxResults = 6;
+    const v = "https://www.googleapis.com/books/v1/volumes?q="+topic+"&maxResults="+ maxResults + "&startIndex=" + startIndex;
     
     axios.get(v)
     .then(async(response)=>{

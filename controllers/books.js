@@ -4,13 +4,14 @@ const asyncHandler = require('../middleware/asyncHandler')
 
 exports.getBooks = asyncHandler(async(req, res, next)=>{
     let query; 
-    if(req.keyword)
+    if(req.params.keyword)
         // Энэ page-г чинь req явуулахдаа оруулж өгнө. 
-        fetch(req.params.keyword, req.params.page);
+        // Гэхдээ page-г заавал бас оруулаад баймааргүй байнаа. Эхнийх дээр бол угаасаа дамжуулна гэж худлаа. Тэгэхээр дамжуулахгүй бол 0 байна гэдгийг зааж өгөх хэрэгтэй юм шиг санагдав. 
+        fetch(req.params.keyword, req.params.page, req.params.max);
     else{
         // Refresh хийгдэхэд энэ page чинь өөрчлөгдөнө. 
         book.deleteMany();
-        fetch('New York Time Bestsellers', req.params.page);
+        fetch('New York Time Bestsellers', req.params.page, req.params.max);
     }
     query = book.find().limit(6);
     const books = await query; 
