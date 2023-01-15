@@ -9,8 +9,8 @@ exports.fetch = async (topic, page, maxResults)=>{
     const v = "https://www.googleapis.com/books/v1/volumes?q="+topic+"&maxResults="+ maxResults + "&startIndex=" + startIndex;
     // https://www.googleapis.com/books/v1/volumes?q=love&maxResults=1&&startIndex=2
     // Энд ажиллаж байх ёстой шүү дээ.  
-    axios.get(v)
-    .then(async(response)=>{
+    await axios.get(v)
+    .then((response)=>{
         importData(response.data.items);
         // db рүү гээ батны орж байна. Харин 
         console.log("Imported");
