@@ -5,17 +5,17 @@ const asyncHandler = require('../middleware/asyncHandler')
 exports.getBooks = asyncHandler(async(req, res, next)=>{
     let query; 
     console.log(req.key);
-    if(req.params.keyword)
+    if(req.key.keyword)
         // Энэ page-г чинь req явуулахдаа оруулж өгнө. 
         // Гэхдээ page-г заавал бас оруулаад баймааргүй байнаа. Эхнийх дээр бол угаасаа дамжуулна гэж худлаа. Тэгэхээр дамжуулахгүй бол 0 байна гэдгийг зааж өгөх хэрэгтэй юм шиг санагдав. 
-        fetche(req.params.keyword, req.params.page, req.params.max);
+        fetche(req.key.keyword, req.key.page, req.key.max);
     else{
         // Refresh хийгдэхэд энэ page чинь өөрчлөгдөнө. 
         book.deleteMany();
-        console.log("page: " +req.params.page);
-        console.log("max: " + req.params.max);
+        console.log("page: " +req.key.page);
+        console.log("max: " + req.key.max);
         
-        await fetch('Love', req.params.page, req.params.max);
+        await fetch('Love', req.key.page, req.key.max);
         
         // Энд ажиллах ёстой.
         console.log("Api-гаас датагаа авав."); 
