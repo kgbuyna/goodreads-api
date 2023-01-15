@@ -11,7 +11,7 @@ exports.getBooks = asyncHandler(async(req, res, next)=>{
     else{
         // Refresh хийгдэхэд энэ page чинь өөрчлөгдөнө. 
         book.deleteMany({}).exec().then(()=>{
-            fetch('Love', req.query.page, req.query.max);
+            await fetch('Love', req.query.page, req.query.max);
             console.log("Succeed");
         });
         
