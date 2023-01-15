@@ -17,7 +17,7 @@ exports.getBooks = asyncHandler(async(req, res, next)=>{
         console.log("Api-гаас датагаа авав."); 
         // fetch is responsible for loading data to book model. 
     }
-    query = book.find().limit(6);
+    query = book.find();
     console.log(query[0]);
     const books = await query; 
     if(books){
