@@ -7,11 +7,11 @@ exports.getBooks = asyncHandler(async(req, res, next)=>{
     if(req.query.keyword)
         // Энэ page-г чинь req явуулахдаа оруулж өгнө. 
         // Гэхдээ page-г заавал бас оруулаад баймааргүй байнаа. Эхнийх дээр бол угаасаа дамжуулна гэж худлаа. Тэгэхээр дамжуулахгүй бол 0 байна гэдгийг зааж өгөх хэрэгтэй юм шиг санагдав. 
-        await fetch(req.query.keyword, req.query.page, req.query.max);
+        fetch(req.query.keyword, req.query.page, req.query.max);
     else{
         // Refresh хийгдэхэд энэ page чинь өөрчлөгдөнө. 
-        book.deleteMany({}).exec().then(async()=>{
-            await fetch('Love', req.query.page, req.query.max);
+        book.deleteMany({}).exec().then(()=>{
+            fetch('Love', req.query.page, req.query.max);
             console.log("Succeed");
         });
         

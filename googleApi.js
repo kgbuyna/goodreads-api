@@ -11,12 +11,14 @@ exports.fetch = (topic, page, maxResults)=>{
     // Энд ажиллаж байх ёстой шүү дээ.  
     axios.get(v)
     .then(async(response)=>{
-        await importData(response.data.items);
+        importData(response.data.items);
+        // db рүү гээ батны орж байна. Харин 
+        console.log("Imported");
     })
     .catch((error)=>{console.log(`Error occured  ${error}`)});
 }
 // Би async хэрэглэх газар async ашиглахгүй бол юу болдгийг нь мэдмээр байна. Яг ямар алдаа гардгийг нь мэдэхгүй болохоор шал тэнэг байна л даа. 
-async function importData(resource){
+function importData(resource){
      resource.map(async({id, volumeInfo})=>{
         await book.create([{ 
             bookId: id,
