@@ -4,6 +4,7 @@ const asyncHandler = require('../middleware/asyncHandler')
 
 exports.getBooks = asyncHandler(async(req, res, next)=>{
     let query; 
+    console.log(req.params);
     if(req.params.keyword)
         // Энэ page-г чинь req явуулахдаа оруулж өгнө. 
         // Гэхдээ page-г заавал бас оруулаад баймааргүй байнаа. Эхнийх дээр бол угаасаа дамжуулна гэж худлаа. Тэгэхээр дамжуулахгүй бол 0 байна гэдгийг зааж өгөх хэрэгтэй юм шиг санагдав. 
