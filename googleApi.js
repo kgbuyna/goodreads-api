@@ -3,7 +3,7 @@ const connectDB = require('./config/db.js');
 const {book} = require('./Models/Book')
 
 
-exports.fetch = async(topic, page, maxResults)=>{
+exports.fetch = (topic, page, maxResults)=>{
     console.log(page);
     const startIndex = parseInt(page) * maxResults;  
     const v = "https://www.googleapis.com/books/v1/volumes?q="+topic+"&maxResults="+ maxResults + "&startIndex=" + startIndex;
