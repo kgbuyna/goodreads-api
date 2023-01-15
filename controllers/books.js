@@ -16,8 +16,7 @@ exports.getBooks = asyncHandler(async (req, res, next) => {
       .then(async () => {
         await fetch("Love", req.query.page, req.query.max);
         console.log("Succeed");
-        query = book.find();
-        const books = await query;
+        const books = await book.find();
         if (books) {
           res.status(200).json({
             success: true,
