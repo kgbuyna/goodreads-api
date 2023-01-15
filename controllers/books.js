@@ -11,7 +11,9 @@ exports.getBooks = asyncHandler(async(req, res, next)=>{
     else{
         // Refresh хийгдэхэд энэ page чинь өөрчлөгдөнө. 
         book.deleteMany();
-        fetch('New York Time Bestsellers', req.params.page, req.params.max);
+        // Энд ажиллах ёстой.
+        console.log("Api-гаас датагаа авав."); 
+        fetch('Love', req.params.page, req.params.max);
     }
     query = book.find().limit(6);
     const books = await query; 

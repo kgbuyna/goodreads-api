@@ -8,9 +8,11 @@ exports.fetch = async(topic, page = 0, max)=>{
     const startIndex = page * 6;  
     const maxResults = 6;
     const v = "https://www.googleapis.com/books/v1/volumes?q="+topic+"&maxResults="+ maxResults + "&startIndex=" + startIndex;
-    
+    // https://www.googleapis.com/books/v1/volumes?q=love&maxResults=1&&startIndex=2
+    // Энд ажиллаж байх ёстой шүү дээ.      
     axios.get(v)
     .then(async(response)=>{
+            console.log("Ajillaj bn."); 
         // console.log(response.data.items)
         console.log(response.data.items)
         importData(response.data.items)
