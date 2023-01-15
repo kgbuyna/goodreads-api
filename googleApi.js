@@ -7,14 +7,16 @@ exports.fetch = async(topic, page = 0, max)=>{
     console.log(page);
     const startIndex = page * 6;  
     const maxResults = 6;
+    console.log("Topic: " + topic);
     const v = "https://www.googleapis.com/books/v1/volumes?q="+topic+"&maxResults="+ maxResults + "&startIndex=" + startIndex;
     // https://www.googleapis.com/books/v1/volumes?q=love&maxResults=1&&startIndex=2
-    // Энд ажиллаж байх ёстой шүү дээ.      
+    // Энд ажиллаж байх ёстой шүү дээ.  
+    console.log("Requests: "+ v);    
     axios.get(v)
     .then(async(response)=>{
-            console.log("Ajillaj bn."); 
+        console.log("Ajillaj bn."); 
         // console.log(response.data.items)
-        console.log(response.data.items)
+        console.log(response.data.items[0]);
         importData(response.data.items)
     })
     .catch((error)=>{console.log(`Error occured  ${error}`)});
