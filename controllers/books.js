@@ -17,16 +17,16 @@ exports.getBooks = asyncHandler(async (req, res, next) => {
         await fetch("Love", req.query.page, req.query.max);
         console.log("Succeed");
         const books = await book.find();
-        if (books) {
-          res.status(200).json({
-            success: true,
-            data: books,
-          });
-        }
-      });
-
+    });
+    
     // Энд ажиллах ёстой.
     console.log("Api-гаас датагаа авав.");
+    if (books) {
+      res.status(200).json({
+        success: true,
+        data: books,
+      });
+    }
   }
 });
 
