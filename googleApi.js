@@ -3,7 +3,7 @@ const connectDB = require('./config/db.js');
 const {book} = require('./Models/Book')
 
 
-exports.fetch = async(topic, page = 0, max)=>{
+exports.fetch = async(topic, page, max)=>{
     console.log(page);
     const startIndex = page * 6;  
     const maxResults = 6;
@@ -17,7 +17,7 @@ exports.fetch = async(topic, page = 0, max)=>{
         console.log("Ajillaj bn."); 
         // console.log(response.data.items)
         console.log(response.data.items[0]);
-        importData(response.data.items)
+        importData(response.data.items);
     })
     .catch((error)=>{console.log(`Error occured  ${error}`)});
 }

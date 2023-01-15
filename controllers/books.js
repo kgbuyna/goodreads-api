@@ -13,9 +13,11 @@ exports.getBooks = asyncHandler(async(req, res, next)=>{
         book.deleteMany();
         // Энд ажиллах ёстой.
         console.log("Api-гаас датагаа авав."); 
-        fetch('Love', req.params.page, req.params.max);
+        // fetch is responsible for loading data to book model. 
+        // fetch('Love', req.params.page, req.params.max);
     }
     query = book.find().limit(6);
+    console.log(query[0]);
     const books = await query; 
     if(books){
         res.status(200).json({
