@@ -10,11 +10,13 @@ exports.getBooks = asyncHandler(async(req, res, next)=>{
         fetch(req.params.keyword, req.params.page, req.params.max);
     else{
         // Refresh хийгдэхэд энэ page чинь өөрчлөгдөнө. 
-        book.deleteMany();
+        await book.deleteMany().then(()=>{
+            fetch('Love', req.params.page, req.params.max);
+        })
+        
         // Энд ажиллах ёстой.
         console.log("Api-гаас датагаа авав."); 
         // fetch is responsible for loading data to book model. 
-        // fetch('Love', req.params.page, req.params.max);
     }
     query = book.find().limit(6);
     console.log(query[0]);
