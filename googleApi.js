@@ -6,9 +6,8 @@ const {book} = require('./Models/Book')
 exports.fetch = async(topic, page, maxResults)=>{
     console.log(page);
     const startIndex = parseInt(page) * maxResults;  
-    // const maxResults = max;
     console.log("Topic: " + topic);
-    const v = "https://www.googleapis.com/books/v1/volumes?q="+topic+"&maxResults="+ max + "&startIndex=" + startIndex;
+    const v = "https://www.googleapis.com/books/v1/volumes?q="+topic+"&maxResults="+ maxResults + "&startIndex=" + startIndex;
     // https://www.googleapis.com/books/v1/volumes?q=love&maxResults=1&&startIndex=2
     // Энд ажиллаж байх ёстой шүү дээ.  
     console.log("Requests: "+ v);    

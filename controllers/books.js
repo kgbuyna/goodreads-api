@@ -11,6 +11,9 @@ exports.getBooks = asyncHandler(async(req, res, next)=>{
     else{
         // Refresh хийгдэхэд энэ page чинь өөрчлөгдөнө. 
         book.deleteMany();
+        console.log("page: " +req.paramms.page);
+        console.log("max: " + req.paramms.max);
+        
         await fetch('Love', req.params.page, req.params.max);
         
         // Энд ажиллах ёстой.
