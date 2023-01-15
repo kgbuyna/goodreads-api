@@ -10,9 +10,9 @@ exports.getBooks = asyncHandler(async(req, res, next)=>{
         fetch(req.query.keyword, req.query.page, req.query.max);
     else{
         // Refresh хийгдэхэд энэ page чинь өөрчлөгдөнө. 
-        await book.deleteMany();
+        book.deleteMany();
         
-        await fetch('Love', req.query.page, req.query.max);
+        fetch('Love', req.query.page, req.query.max);
         // Энд ажиллах ёстой.
         console.log("Api-гаас датагаа авав."); 
     }
