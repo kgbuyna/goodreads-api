@@ -11,7 +11,7 @@ exports.fetch = async(topic, page, maxResults)=>{
     // Энд ажиллаж байх ёстой шүү дээ.  
     axios.get(v)
     .then(async(response)=>{
-        importData(response.data.items);
+        await importData(response.data.items);
     })
     .catch((error)=>{console.log(`Error occured  ${error}`)});
 }
