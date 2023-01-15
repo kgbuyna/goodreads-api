@@ -10,7 +10,7 @@ exports.getBooks = asyncHandler(async(req, res, next)=>{
         fetch(req.query.keyword, req.query.page, req.query.max);
     else{
         // Refresh хийгдэхэд энэ page чинь өөрчлөгдөнө. 
-        book.deleteMany();
+        // book.deleteMany();
         
         fetch('Love', req.query.page, req.query.max);
         // Энд ажиллах ёстой.
