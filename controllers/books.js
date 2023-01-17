@@ -3,30 +3,46 @@ const { fetch } = require("../googleApi");
 const asyncHandler = require("../middleware/asyncHandler");
 
 exports.getBooks = asyncHandler(async (req, res, next) => {
-  let query;
-  if (req.query.keyword)
-    // Энэ page-г чинь req явуулахдаа оруулж өгнө.
-    // Гэхдээ page-г заавал бас оруулаад баймааргүй байнаа. Эхнийх дээр бол угаасаа дамжуулна гэж худлаа. Тэгэхээр дамжуулахгүй бол 0 байна гэдгийг зааж өгөх хэрэгтэй юм шиг санагдав.
-    await fetch(req.query.keyword, req.query.page, req.query.max);
-  else {
-    // Refresh хийгдэхэд энэ page чинь өөрчлөгдөнө.
-    book
-      .deleteMany({})
-      .exec()
-      .then(async () => {
-        await fetch("Love", req.query.page, req.query.max);
-        console.log("Succeed");
-    });
-    
-    // Энд ажиллах ёстой.
-    console.log("Api-гаас датагаа авав.");
-    const books = await book.find();
-    if (books) {
-      res.status(200).json({
-        success: true,
-        data: books,
+  // Searchbar дээр keyword орж тэгэхээр нь эд нарыг ашиглана. Homescreen дээр гарч ирэх номноос ялгаатай нь устгахгүй дээр нь нэмж бичнэ.
+  if (req.query.keyword) {
+    await fetch(req.query.keyword, req.query.page, req.query.max).then(
+      async () => {
+        console.log("Datagaa butsaalaa shu.");
+        const books = await book.find();
+        if (books) {
+          //   Яг энд илгээж байхад нь db хоосон байсан гэсэн үг шүү дээ.
+          res.status(200).json({
+            success: true,
+            data: books,
+          });
+        }
+      }
+    );
+  } else {
+    // await book
+    //   .find({})
+    //   .limit(6)
+    //   .then((docs) => {
+    //     return book.deleteMany({
+    //       _id: { $in: docs.map((doc) => doc._id) },
+    //     });
+    //   })
+    //   .then((response) => console.log("Ustgagdsn hed ni" + response))
+    //   .catch((err) => {
+    //     console.log("aldaa garchlashd" + err);
+    //   });
+    await book.deleteMany({}).exec().then(async()=>{
+      await fetch("Love", req.query.page, req.query.max).then(async () => {
+        books=[];
+        while(books.length != 6){
+          books = await book.find();
+        }
+        res.status(200).json({
+          success: true,
+          data: books,
+        });
       });
-    }
+    })
   }
 });
 
