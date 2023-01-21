@@ -19,18 +19,6 @@ exports.getBooks = asyncHandler(async (req, res, next) => {
       }
     );
   } else {
-    // await book
-    //   .find({})
-    //   .limit(6)
-    //   .then((docs) => {
-    //     return book.deleteMany({
-    //       _id: { $in: docs.map((doc) => doc._id) },
-    //     });
-    //   })
-    //   .then((response) => console.log("Ustgagdsn hed ni" + response))
-    //   .catch((err) => {
-    //     console.log("aldaa garchlashd" + err);
-    //   });
     await book.deleteMany({}).exec().then(async()=>{
       await fetch("Love", req.query.page, req.query.max).then(async () => {
         books=[];

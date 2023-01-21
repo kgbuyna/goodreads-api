@@ -10,8 +10,8 @@ const bookSchema = new Schema({
     authors:[String], 
     publishedDate: Date, 
     desc: String, 
-    rating:{type :Number, default:0}, 
-    reviews:{type:Number, default:0}, 
+    rating:{type :Number, default: Math.floor(Math.random() * 5)}, 
+    reviews:{type:Number, default: Math.floor(Math.random() * 10000)}, 
     img: String,
     pages:Number, 
 }); 
