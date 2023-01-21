@@ -4,7 +4,7 @@ module.exports = async function main() {
     try{
         mongoose.set('strictQuery', false);
         console.log("Connecting to Mongodb...")
-        await mongoose.connect('mongodb+srv://kgbuyna:bit1bish@goodreads.vyxvuzz.mongodb.net/?retryWrites=true&w=majority',{
+        await mongoose.connect(process.env.MONGO_URI,{
             useNewUrlParser:true,
             useUnifiedTopology:true,
         });

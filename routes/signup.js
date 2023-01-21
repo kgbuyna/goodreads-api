@@ -1,6 +1,6 @@
 const express = require('express');
 const {
-    register , getUsers
+    register , getUsers, postUser, getUser
 } = require('../controllers/user')
 
 const router = express.Router({ mergeParams: true});

@@ -9,14 +9,15 @@ const User = mongoose.model('User', new  Schema({
     email: {
         type: String,
         minlength: 5,
-        maxlength: 25,
+        maxlength: 250,
         unique: true
     },
     password: {
         type: String,
         minlength: 5,
-        maxlength: 25
-    }
+        maxlength: 500
+    },
+    token: { type: String },
 }));
 // Эндээсээ тэгээд get , post этр хийгээд явна шүү дээ. 
 
